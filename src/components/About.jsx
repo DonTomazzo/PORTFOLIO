@@ -1,22 +1,43 @@
-// src/components/About.jsx
 import React from 'react';
+// Importera två olika bilder här
+import myImage1 from '../assets/my-image-1.png';
+import myImage2 from '../assets/my-image-2.jpg';
 
 const About = () => {
   return (
-    <section className="py-20 px-4 md:px-20 lg:px-40" id="about">
-      <h2 className="text-4xl font-bold mb-8 text-center">Om mig</h2>
-      <div className="max-w-3xl mx-auto text-lg text-gray-300 space-y-6">
-        <p>
-          Jag brinner för att bygga säkra och effektiva webbapplikationer. Med en bakgrund inom...
-        </p>
-        <p>
-          Mina expertområden inkluderar React, Node.js, och databashantering, men jag har en särskild passion för cybersäkerhet och penetrationstestning.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center mt-8">
-          <span className="bg-gray-800 text-teal-400 px-4 py-2 rounded-full">React</span>
-          <span className="bg-gray-800 text-teal-400 px-4 py-2 rounded-full">Tailwind CSS</span>
-          <span className="bg-gray-800 text-teal-400 px-4 py-2 rounded-full">Node.js</span>
-          <span className="bg-gray-800 text-teal-400 px-4 py-2 rounded-full">Säkerhet</span>
+    <section id="about" className="bg-gray-900 text-white py-16">
+      <div className="container mx-auto px-6 max-w-6xl"> {/* Maxbredden har ökats */}
+        <h2 className="text-4xl font-bold text-center mb-12 text-teal-400">Om mig</h2>
+        <div className="flex flex-col md:flex-row items-start md:space-x-8">
+          
+          {/* Vänstra bilden */}
+          <div className="w-full md:w-1/3 mb-8 md:mb-0">
+            <img 
+              src={myImage1} 
+              alt="Beskrivning av bild 1" 
+              className="w-full h-auto rounded-lg shadow-lg" 
+            />
+          </div>
+          
+          {/* Texten i mitten */}
+          <div className="w-full md:w-1/3 text-center md:text-left">
+            <p className="text-lg text-gray-400 mb-4">
+              Här kan du skriva en kort introduktion om dig själv. Berätta om dina erfarenheter, din passion för webbutveckling, och vad som driver dig.
+            </p>
+            <p className="text-lg text-gray-400">
+              Du kan lägga till fler stycken eller punkter här för att ge mer information om din bakgrund och dina färdigheter.
+            </p>
+          </div>
+          
+          {/* Högra bilden */}
+          <div className="w-full md:w-1/3 mt-8 md:mt-0">
+            <img 
+              src={myImage2} 
+              alt="Beskrivning av bild 2" 
+              className="w-full h-auto rounded-lg shadow-lg" 
+            />
+          </div>
+
         </div>
       </div>
     </section>

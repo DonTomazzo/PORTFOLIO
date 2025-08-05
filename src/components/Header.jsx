@@ -1,5 +1,6 @@
 // src/components/Header.jsx
 import React, { useState } from 'react';
+import { FaTimes } from 'react-icons/fa'; // Importera stäng-ikonen
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,8 +13,7 @@ const Header = () => {
     <div className="flex-shrink-0 relative z-[60]">
       <button 
         onClick={toggleMenu} 
-        className="text-white focus:outline-none relative h-16 w-16 flex items-center justify-center p-2 bg-red-500 z-[60]" // VIKTIGT: Röd färg för att se om knappen renderas
-        style={{ zIndex: '9999 !important' }} // VIKTIGT: Hög z-index för att vara säker
+        className="text-white focus:outline-none relative h-16 w-16 flex items-center justify-center p-2"
       >
         <div className="flex flex-col space-y-3 transition-transform duration-300 transform">
           <span 
@@ -40,11 +40,17 @@ const Header = () => {
       </button>
 
       <nav
-        className={`fixed top-0 right-0 h-screen w-80 shadow-lg p-8 transform transition-transform duration-500 ease-in-out z-40 font-sans ${
+        className={`fixed top-0 right-0 h-screen w-80 shadow-lg p-8 transform transition-transform duration-500 ease-in-out z-40 font-sans bg-gray-900 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
-        style={{ backgroundColor: 'transparent !important' }} // VIKTIGT: Gör sidomenyn transparent
       >
+        <button
+          onClick={toggleMenu}
+          className="absolute top-6 right-6 text-white hover:text-teal-400 transition-colors duration-200 focus:outline-none"
+        >
+          <FaTimes size={36} /> {/* Stäng-ikonen */}
+        </button>
+
         <ul className="space-y-6 pt-16">
           <li><a href="#hero" onClick={toggleMenu} className="hover:text-teal-400 transition-colors text-2xl">Hem</a></li>
           <li><a href="#about" onClick={toggleMenu} className="hover:text-teal-400 transition-colors text-2xl">Om mig</a></li>

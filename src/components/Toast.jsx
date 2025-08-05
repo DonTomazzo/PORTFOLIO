@@ -1,31 +1,25 @@
 // src/components/Toast.jsx
-import React, { useState, useEffect } from 'react';
+import React from 'react'; // Ingen useState eller useEffect behövs längre
 
-const Toast = ({ message, type = 'info', duration = 3000 }) => {
-  const [isVisible, setIsVisible] = useState(true);
+const Toast = ({ message, type = 'info', color = 'bg-blue-500', isBlinking = false, position = 'top-right' }) => {
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, duration);
-
-    return () => clearTimeout(timer); // Rensar timern om komponenten avmonteras
-  }, [duration]);
-
-  if (!isVisible) {
-    return null;
-  }
-
-  const toastClasses = {
-    info: 'bg-blue-500',
-    success: 'bg-green-500',
-    error: 'bg-red-500',
+  const getPositionClasses = (pos) => {
+    switch (pos) {
+      case 'top-left':
+        return 'top-4 left-48'; 
+      case 'bottom-left':
+        return 'bottom-4 left-4';
+      case 'bottom-right':
+        return 'bottom-4 right-4';
+      case 'top-right':
+      default:
+        return 'top-4 right-4';
+    }
   };
 
   return (
     <div
-      className={`fixed bottom-4 right-4 p-4 rounded-lg shadow-lg text-white font-bold
-                  toast-slide-in ${toastClasses[type]} toast-fade-out`}
+      className={`fixed ${getPositionClasses(position)} p-4 rounded-lg shadow-xl text-sm z-[200] transition-transform duration-500 transform ${color} ${isBlinking ? 'animate-pulse' : ''}`}
     >
       {message}
     </div>
